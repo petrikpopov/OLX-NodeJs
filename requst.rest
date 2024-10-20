@@ -1,0 +1,11 @@
+GET https://127.0.0.1:3443/register
+
+
+POST https://127.0.0.1:3443/register
+Content-Type: application/json
+
+{
+    "login": "Dima",
+    "email": "dimon12@gmail.com",
+    "password": "090990"
+}
