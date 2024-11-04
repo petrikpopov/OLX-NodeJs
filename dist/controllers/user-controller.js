@@ -31,4 +31,55 @@ export class UserController {
             res.status(500).json({ message: 'Не удалось получить пользователей', error });
         }
     }
+    static async getUserById(req, res) {
+        try {
+            const { id } = req.params;
+            const user = await User.findByPk(id, {
+                include: [{
+                        model: Role,
+                        as: 'Role',
+                        attributes: ['id', 'name']
+                    }]
+            });
+            if (!user) {
+                return res.status(404).json({ message: 'Пользователь не найден' });
+            }
+            res.status(200).json(user);
+        }
+        catch (error) {
+            console.error('Ошибка при получении пользователя:', error);
+            res.status(500).json({ message: 'Не удалось получить пользователя', error });
+        }
+    }
+    static async updateUser(req, res) {
+        try {
+            const { id } = req.params;
+            const { login, email, password, roleId } = req.body;
+            const user = await User.findByPk(id);
+            if (!user) {
+                return res.status(404).json({ message: 'Пользователь не найден' });
+            }
+            await user.update({ login, email, password, roleId });
+            res.status(200).json(user);
+        }
+        catch (error) {
+            console.error('Ошибка при обновлении пользователя:', error);
+            res.status(500).json({ message: 'Не удалось обновить пользователя', error });
+        }
+    }
+    static async deleteUser(req, res) {
+        try {
+            const { id } = req.params;
+            const user = await User.findByPk(id);
+            if (!user) {
+                return res.status(404).json({ message: 'Пользователь не найден' });
+            }
+            await user.destroy();
+            res.status(204).send();
+        }
+        catch (error) {
+            console.error('Ошибка при удалении пользователя:', error);
+            res.status(500).json({ message: 'Не удалось удалить пользователя', error });
+        }
+    }
 }

@@ -1,4 +1,4 @@
-# GET https://127.0.0.1:3443/users
+GET https://127.0.0.1:3443/users
 
 
 # POST https://127.0.0.1:3443/users
@@ -28,7 +28,7 @@
 #     ]
 # }
 
-GET https://127.0.0.1:3443/ads
+# GET https://127.0.0.1:3443/ads
 # POST https://127.0.0.1:3443/ads
 # Content-Type: application/json
 
@@ -41,4 +41,16 @@ GET https://127.0.0.1:3443/ads
 #         "url_фото_смартфона_1",
 #         "url_фото_смартфона_2"
 #     ]
+# }
+
+# DELETE https://127.0.0.1:3443/users/delete/2
+
+# PUT  https://127.0.0.1:3443/users/update/1
+# Content-Type: application/json
+
+# {
+#     "login": "НовыйЛогин",
+#     "email": "новый_email@gmail.com",
+#     "password": "новый_пароль",
+#     "roleId": 2
 # }
