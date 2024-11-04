@@ -1,11 +1,12 @@
-GET https://127.0.0.1:3443/register
+# GET https://127.0.0.1:3443/users
 
 
-POST https://127.0.0.1:3443/register
+POST https://127.0.0.1:3443/users
 Content-Type: application/json
 
 {
-    "login": "Dima",
-    "email": "dimon12@gmail.com",
-    "password": "090990"
+    "login": "Иванел",
+    "email": "ivanel42@gmail.com",
+    "password": "098753621",
+    "roleId": 2
 }

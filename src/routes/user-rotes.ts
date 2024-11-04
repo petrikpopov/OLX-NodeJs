@@ -1,22 +1,9 @@
-import { Router , Response, Request} from "express";
-import { IUsers, users } from "../data/user.js";
-import { UserController } from "../controllers/user-controller.js";
-import { User } from "../models/user-model.js";
+import { Router } from 'express';
+import { UserController } from '../controllers/user-controller.js';
 
-const userRegisterRouter = Router();
+const router = Router();
 
-userRegisterRouter.get('/', async (req: Request, res: Response) => {
-    try {
-        const users = await User.getAllUsers();
-        res.status(200).json(users);
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Ошибка получения пользователей" });
-    }
-});
+router.post('/', UserController.createUser); 
+router.get('/', UserController.getUsers);  
 
-userRegisterRouter.post('/', UserController.createUser, (req:Request<{},{},IUsers>, res:Response)=>{
-
-});
-
-export default userRegisterRouter;
+export default router;

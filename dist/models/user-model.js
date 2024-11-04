@@ -1,27 +1,37 @@
-import { connectionDb } from "../config/mysql-config.js";
-export class User {
-    static addRegisterUser(users) {
-        return new Promise((resolve, reject) => {
-            connectionDb.query("INSERT INTO users (login, email, password) VALUES(?, ?, ?)", [users.login, users.email, users.password], (err, res) => {
-                if (err) {
-                    return reject(new Error(err.message));
-                }
-                else {
-                    return resolve(res.insertId);
-                }
-            });
-        });
-    }
-    static getAllUsers() {
-        return new Promise((resolve, reject) => {
-            connectionDb.query("SELECT * FROM users", (err, results) => {
-                if (err) {
-                    return reject(new Error(err.message));
-                }
-                else {
-                    resolve(results);
-                }
-            });
-        });
-    }
+import { DataTypes, Model } from 'sequelize';
+import { sequelize } from '../config/sequelize-config.js';
+import { Role } from './role-model.js';
+export class User extends Model {
 }
+User.init({
+    id: {
+        type: DataTypes.INTEGER.UNSIGNED,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    login: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    roleId: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'roles',
+            key: 'id'
+        }
+    }
+}, {
+    sequelize,
+    tableName: 'users',
+    timestamps: false,
+});
+User.belongsTo(Role, { foreignKey: 'roleId' });
+Role.hasMany(User, { foreignKey: 'roleId' });
