@@ -1,12 +1,44 @@
 # GET https://127.0.0.1:3443/users
 
 
-POST https://127.0.0.1:3443/users
-Content-Type: application/json
+# POST https://127.0.0.1:3443/users
+# Content-Type: application/json
 
-{
-    "login": "Иванел",
-    "email": "ivanel42@gmail.com",
-    "password": "098753621",
-    "roleId": 2
-}
+# {
+#     "login": "Иванел",
+#     "email": "ivanel42@gmail.com",
+#     "password": "098753621",
+#     "roleId": 2
+# }
+
+# DELETE  https://127.0.0.1:3443/ads/delete/3
+
+# PUT https://127.0.0.1:3443/ads/update/4
+# Content-Type: application/json
+
+# {
+#     "id": 4,
+#     "title": "Продается кампуктер",
+#     "description": "Kампуктер в отличном состоянии, полный комплект.",
+#     "category": "Электроника",
+#     "price": 20100,
+#     "photos": [
+#       "photo1",
+#       "photo12"
+#     ]
+# }
+
+GET https://127.0.0.1:3443/ads
+# POST https://127.0.0.1:3443/ads
+# Content-Type: application/json
+
+# {
+#     "title": "Продается кампуктер",
+#     "description": "Смартфон в отличном состоянии, полный комплект.",
+#     "category": "Электроника",
+#     "price": 20000,
+#     "photos": [
+#         "url_фото_смартфона_1",
+#         "url_фото_смартфона_2"
+#     ]
+# }

@@ -5,6 +5,7 @@ import path from 'node:path';
 import userRouter from './routes/user-rotes.js';
 import roleRouter from './routes/role-routes.js';
 import { connectDb } from './config/sequelize-config.js';
+import adRouter from './routes/ad-routes.js';
 const PORT = 3443;
 const _dirname = import.meta.url ? path.dirname(new URL(import.meta.url).pathname) : '';
 const run = () => {
@@ -17,5 +18,6 @@ const run = () => {
     app.use(express.json());
     app.use('/users', userRouter);
     app.use('/roles', roleRouter);
+    app.use('/ads', adRouter);
 };
 connectDb().then(run).catch(err => console.error('Не удалось подключиться к базе данных:', err));
