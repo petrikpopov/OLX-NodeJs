@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { Ad } from '../models/ad-model.js';
+import { Op } from 'sequelize';
 
 export class AdController {
     static async createAd(req: Request, res: Response) {
@@ -71,4 +72,42 @@ export class AdController {
             res.status(500).json({ message: 'Не удалось удалить объявление', error });
         }
     }
+    static async searchAds(req: Request, res: Response) {
+        try {
+            const { title, category, minPrice, maxPrice } = req.query;
+            const whereConditions = [];
+
+            if (title) {
+                whereConditions.push({ title: { [Op.like]: `%${title}%` } });
+            }
+
+            if (category) {
+                whereConditions.push({ category: { [Op.like]: `%${category}%` } });
+            }
+
+            if (minPrice) {
+                whereConditions.push({ price: { [Op.gte]: Number(minPrice) } });
+            }
+
+            if (maxPrice) {
+                whereConditions.push({ price: { [Op.lte]: Number(maxPrice) } });
+            }
+
+            const ads = await Ad.findAll({
+                where: {
+                    [Op.and]: whereConditions
+                },
+            });
+
+            if (ads.length === 0) {
+                return res.status(404).json({ message: 'Объявления не найдены' });
+            }
+
+            res.status(200).json(ads);
+        } catch (error) {
+            console.error('Ошибка при поиске объявлений:', error);
+            res.status(500).json({ message: 'Не удалось выполнить поиск объявлений', error });
+        }
+    }
+     
 }

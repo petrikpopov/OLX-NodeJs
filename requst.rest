@@ -1,4 +1,7 @@
-GET https://127.0.0.1:3443/users
+# GET https://127.0.0.1:3443/ads
+
+
+POST https://127.0.0.1:3443/ads/search?category=Электроника&minPrice=15000&maxPrice=20300
 
 
 # POST https://127.0.0.1:3443/users
