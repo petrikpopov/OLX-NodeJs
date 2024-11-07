@@ -1,15 +1,24 @@
 # GET https://127.0.0.1:3443/ads
 
+# POST https://127.0.0.1:3443/users/login
+# Content-Type: application/json
 
-POST https://127.0.0.1:3443/ads/search?category=Электроника&minPrice=15000&maxPrice=20300
+# {
+#     "login": "Насавпавтя",
+#     "password": "098753621"
+# }
 
+
+# POST https://127.0.0.1:3443/ads/search?category=Электроника&minPrice=15000&maxPrice=20300
+
+GET  https://127.0.0.1:3443/role/2
 
 # POST https://127.0.0.1:3443/users
 # Content-Type: application/json
 
 # {
-#     "login": "Иванел",
-#     "email": "ivanel42@gmail.com",
+#     "login": "Настя",
+#     "email": "nastia23@gmail.com",
 #     "password": "098753621",
 #     "roleId": 2
 # }

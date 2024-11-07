@@ -6,9 +6,12 @@ import userRouter from './routes/user-rotes.js'
 import roleRouter from './routes/role-routes.js';
 import { connectDb } from './config/sequelize-config.js';
 import adRouter from './routes/ad-routes.js';
+import dotenv from 'dotenv';
 
 const PORT = 3443;
 const _dirname = import.meta.url ? path.dirname(new URL(import.meta.url).pathname) : '';
+
+dotenv.config();
 
 const run = () => {
     const app = express();
