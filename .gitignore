@@ -2,7 +2,7 @@
 node_modules/
 
 #dist и все в ней
-/dist/
+dist/
 
 .env
 
