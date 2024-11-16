@@ -1,3 +1,19 @@
+PATCH https://127.0.0.1:3443/messages/read/1
+# Content-Type: application/json
+
+
+# GET https://127.0.0.1:3443/messages/get?userId=1&chatPartnerId=2&adId=10
+
+# POST https://127.0.0.1:3443/messages/send
+# Content-Type: application/json
+
+# {
+#   "senderId": 2,
+#   "recipientId": 2,
+#   "adId": 10,
+#   "content": "Привіт! Я зацікавлений у вашому оголошенні."
+# }
+
 # GET https://127.0.0.1:3443/ads
 
 # POST https://127.0.0.1:3443/users/login
@@ -11,7 +27,7 @@
 
 # POST https://127.0.0.1:3443/ads/search?category=Электроника&minPrice=15000&maxPrice=20300
 
-GET  https://127.0.0.1:3443/role/2
+# GET  https://127.0.0.1:3443/role/2
 
 # POST https://127.0.0.1:3443/users
 # Content-Type: application/json

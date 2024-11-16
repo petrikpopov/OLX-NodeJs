@@ -7,6 +7,7 @@ import roleRouter from './routes/role-routes.js';
 import { connectDb } from './config/sequelize-config.js';
 import adRouter from './routes/ad-routes.js';
 import dotenv from 'dotenv';
+import messageRoutes from './routes/messageRoutes.js';
 
 const PORT = 3443;
 const _dirname = import.meta.url ? path.dirname(new URL(import.meta.url).pathname) : '';
@@ -25,6 +26,7 @@ const run = () => {
     app.use('/users', userRouter);
     app.use('/roles', roleRouter);
     app.use('/ads', adRouter);
+    app.use('/messages', messageRoutes);
 };
 
 connectDb().then(run).catch(err => console.error('Не удалось подключиться к базе данных:', err));
