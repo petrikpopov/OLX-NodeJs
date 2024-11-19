@@ -1,84 +1,141 @@
+//user
+
+POST https://127.0.0.1:3443/users
+Content-Type: application/json
+
+{
+    "login": "Юля",
+    "email": "ulia1223@gmail.com",
+    "password": "098753621",
+    "roleId": 1
+}
+
+GET https://127.0.0.1:3443/users
+
+DELETE https://127.0.0.1:3443/users/delete/3
+
+PUT  https://127.0.0.1:3443/users/update/1
+Content-Type: application/json
+
+{
+    "login": "НовыйЛогин",
+    "email": "email12@gmail.com",
+    "password": "новый_пароль",
+    "roleId": 2
+}
+
+//role
+POST https://127.0.0.1:3443/roles
+Content-Type: application/json
+
+{
+    "name": "Admin"
+}
+
+GET  https://127.0.0.1:3443/roles
+
+DELETE   https://127.0.0.1:3443/roles/delete/4
+
+PUT  https://127.0.0.1:3443/roles/update/2
+Content-Type: application/json
+
+{
+    "name":"SuperAdmin"
+}
+
+GET  https://127.0.0.1:3443/roles/3
+
+
+//ads
+
+GET https://127.0.0.1:3443/ads
+
+POST https://127.0.0.1:3443/ads
+Content-Type: application/json
+
+{
+    "title": "Продается мотоцикл",
+    "description": "Лифан ЛФ-150",
+    "category": "Техника",
+    "price": 35000,
+    "photos": [
+        "url_фото_смартфона_1",
+        "url_фото_смартфона_2"
+    ]
+}
+
+POST https://127.0.0.1:3443/ads/search?category=Техника&minPrice=15000&maxPrice=37300
+
+DELETE  https://127.0.0.1:3443/ads/delete/4
+
+PUT https://127.0.0.1:3443/ads/update/6
+Content-Type: application/json
+
+{
+    "id": 6,
+    "title": "Продается мотоцикл",
+    "description": "Лифан ЛФ-150",
+    "category": "Техника",
+    "price": 20100,
+    "photos": [
+      "photo1",
+      "photo12"
+    ]
+}
+
+//messages
+
+POST https://127.0.0.1:3443/messages/send
+Content-Type: application/json
+
+{
+  "senderId": 1,
+  "recipientId": 2,
+  "adId": 10,
+  "content": "Привіт! Сделай скинку на товар плиз"
+}
+
 PATCH https://127.0.0.1:3443/messages/read/1
-# Content-Type: application/json
+Content-Type: application/json
+
+GET https://127.0.0.1:3443/messages/get?userId=1&chatPartnerId=2&adId=10
+
+//register
+
+POST https://127.0.0.1:3443/users
+Content-Type: application/json
+
+{
+  "login": "Petro",
+  "email": "petro12@example.com",
+  "password": "12345678",
+  "roleId":1
+}
+
+GET  https://127.0.0.1:3443/users
+
+GET  https://127.0.0.1:3443/users/1
+
+DELETE   https://127.0.0.1:3443/users/delete/1
+
+PUT  https://127.0.0.1:3443/users/update/5
+Content-Type: application/json
+
+{
+  "login": "testuser",
+  "email": "test@example.com",
+  "password": "securepassword",
+  "roleId":1
+}
+
+//login
+
+POST https://127.0.0.1:3443/users/login
+Content-Type: application/json
+
+{
+    "login": "Petro",
+    "password": "12345678"
+}
 
 
-# GET https://127.0.0.1:3443/messages/get?userId=1&chatPartnerId=2&adId=10
-
-# POST https://127.0.0.1:3443/messages/send
-# Content-Type: application/json
-
-# {
-#   "senderId": 2,
-#   "recipientId": 2,
-#   "adId": 10,
-#   "content": "Привіт! Я зацікавлений у вашому оголошенні."
-# }
-
-# GET https://127.0.0.1:3443/ads
-
-# POST https://127.0.0.1:3443/users/login
-# Content-Type: application/json
-
-# {
-#     "login": "Насавпавтя",
-#     "password": "098753621"
-# }
-
-
-# POST https://127.0.0.1:3443/ads/search?category=Электроника&minPrice=15000&maxPrice=20300
-
-# GET  https://127.0.0.1:3443/role/2
-
-# POST https://127.0.0.1:3443/users
-# Content-Type: application/json
-
-# {
-#     "login": "Настя",
-#     "email": "nastia23@gmail.com",
-#     "password": "098753621",
-#     "roleId": 2
-# }
-
-# DELETE  https://127.0.0.1:3443/ads/delete/3
-
-# PUT https://127.0.0.1:3443/ads/update/4
-# Content-Type: application/json
-
-# {
-#     "id": 4,
-#     "title": "Продается кампуктер",
-#     "description": "Kампуктер в отличном состоянии, полный комплект.",
-#     "category": "Электроника",
-#     "price": 20100,
-#     "photos": [
-#       "photo1",
-#       "photo12"
-#     ]
-# }
-
-# GET https://127.0.0.1:3443/ads
-# POST https://127.0.0.1:3443/ads
-# Content-Type: application/json
-
-# {
-#     "title": "Продается кампуктер",
-#     "description": "Смартфон в отличном состоянии, полный комплект.",
-#     "category": "Электроника",
-#     "price": 20000,
-#     "photos": [
-#         "url_фото_смартфона_1",
-#         "url_фото_смартфона_2"
-#     ]
-# }
-
-# DELETE https://127.0.0.1:3443/users/delete/2
-
-# PUT  https://127.0.0.1:3443/users/update/1
-# Content-Type: application/json
-
-# {
-#     "login": "НовыйЛогин",
-#     "email": "новый_email@gmail.com",
-#     "password": "новый_пароль",
-#     "roleId": 2
-# }
